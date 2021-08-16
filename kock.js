@@ -48,22 +48,18 @@ function drawLine(p0, p1, color="black") {
 }
 
 function recursiveKock(p0,p4, level){
-    
-    const p1 = trisection(p0,p4,1/2)
-    const p3 = trisection(p0,p4,2)
-    const p2 = rotate(p3,p1,Math.PI/3)
-    let points = [p0, p1, p2, p3, p4] 
-
-    for(let i=0; i<4;i++){
-        if(level<=1){
-            
-            drawLine(points[i],points[i+1], randomColor())
-        }
-        else {
+    if(level<=0){
+        drawLine(p0,p4, randomColor())
+    } 
+    else{
+        const p1 = trisection(p0,p4,1/2)
+        const p3 = trisection(p0,p4,2)
+        const p2 = rotate(p3,p1,Math.PI/3)
+        let points = [p0, p1, p2, p3, p4] 
+        for(let i=0; i<4;i++){
             recursiveKock(points[i],points[i+1], level-1)
         }
     }
-
 }
 
 function main(){
