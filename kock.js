@@ -63,15 +63,23 @@ function recursiveKock(p0,p4, level){
 }
 
 function main(){
+    
+    let canvas = document.getElementById("myCanvas");
+    canvas.width = document.body.clientWidth
+    canvas.height = document.body.clientHeight
+    let context = canvas.getContext("2d");
+    context.translate(450, 400);
+
+    const levelInput = document.getElementById('level-input')
+    const level = parseInt(levelInput.value)
+
     const p1 = { x:0, y:0 }
     const p2 = { x:450, y:0 }
     const p3 = rotate(p2, p1, -Math. PI/3)
-    let level = 7
+
     recursiveKock( p1, p2, level)
     recursiveKock( p2, p3, level)
     recursiveKock( p3, p1, level)
 }
-
-main()
 
 
